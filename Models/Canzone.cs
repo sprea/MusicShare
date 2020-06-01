@@ -21,8 +21,6 @@ namespace MusicShare.Models
 
         public string Nome_file { get; set; }
 
-        public IFormFile File { get; set; }
-
         public Genere Genere { get; set; }
 
         public ApplicationUser ApplicationUser { get; set; }

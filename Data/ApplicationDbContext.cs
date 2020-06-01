@@ -13,5 +13,6 @@ namespace MusicShare.Data
             : base(options)
         {
         }
+        public DbSet<Genere> Genere { get; set; }
     }
 }
