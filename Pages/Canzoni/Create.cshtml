@@ -1,0 +1,48 @@
+﻿@page
+@model MusicShare.Pages.Canzoni.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Canzone</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Canzone.Titolo" class="control-label"></label>
+                <input asp-for="Canzone.Titolo" class="form-control" />
+                <span asp-validation-for="Canzone.Titolo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Canzone.Autore" class="control-label"></label>
+                <input asp-for="Canzone.Autore" class="form-control" />
+                <span asp-validation-for="Canzone.Autore" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Canzone.Nome_file" class="control-label"></label>
+                <input asp-for="Canzone.Nome_file" class="form-control" />
+                <span asp-validation-for="Canzone.Nome_file" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Canzone.Id_Genere" class="control-label"></label>
+                <select asp-for="Canzone.Id_Genere" class ="form-control" asp-items="ViewBag.Id_Genere"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

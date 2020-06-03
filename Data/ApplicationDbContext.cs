@@ -14,5 +14,6 @@ namespace MusicShare.Data
         {
         }
         public DbSet<Genere> Genere { get; set; }
+        public DbSet<MusicShare.Models.Canzone> Canzone { get; set; }
     }
 }

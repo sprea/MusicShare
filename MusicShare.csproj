@@ -8,6 +8,8 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20200601092044_CreazioneTabelleSistema.cs" />
     <Compile Remove="Data\Migrations\20200601092044_CreazioneTabelleSistema.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200603152334_CreazioneTabelleCanzone-Genere.cs" />
+    <Compile Remove="Data\Migrations\20200603152334_CreazioneTabelleCanzone-Genere.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

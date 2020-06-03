@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,6 +22,9 @@ namespace MusicShare.Models
 
         public string Nome_file { get; set; }
 
+        public long Id_Genere { get; set; }
+
+        [ForeignKey("Id_Genere")]
         public Genere Genere { get; set; }
 
         public ApplicationUser ApplicationUser { get; set; }
