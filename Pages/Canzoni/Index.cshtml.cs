@@ -25,7 +25,7 @@ namespace MusicShare.Pages.Canzoni
 
         public async Task OnGetAsync()
         {
-            Canzone = await _context.Canzone.Include(c => c.Genere).ToListAsync();
+            Canzone = await _context.Canzone.Include(c => c.Genere).Include(c=>c.ApplicationUser).ToListAsync();
         }
     }
 }

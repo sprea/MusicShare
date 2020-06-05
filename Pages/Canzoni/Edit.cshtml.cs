@@ -10,6 +10,11 @@ using Microsoft.EntityFrameworkCore;
 using MusicShare.Data;
 using MusicShare.Models;
 
+/*
+ * To-Do: Le singole canzoni possono essere modificate solamente dagli admin 
+ * e dal proprietario
+ */
+
 namespace MusicShare.Pages.Canzoni
 {
     [Authorize(Roles = "Admin, User")]

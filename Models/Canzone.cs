@@ -13,15 +13,18 @@ namespace MusicShare.Models
         [Key]
         public long id { get; set; }
 
+        [Required(ErrorMessage = "Campo obbligatorio")]
         public string Titolo { get; set; }
 
+        [Required(ErrorMessage = "Campo obbligatorio")]
         public string Autore { get; set; }
 
-        [Display(Name = "Data di caricamento")]
-        public DateTime Data_Caricamento = DateTime.UtcNow;
+        public DateTime Data_Caricamento = DateTime.Now;
 
+        [Display(Name = "Nome del file")]
         public string Nome_file { get; set; }
 
+        [Required(ErrorMessage = "Campo obbligatorio")]
         public long Id_Genere { get; set; }
 
         [ForeignKey("Id_Genere")]

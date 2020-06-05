@@ -11,6 +11,7 @@ namespace MusicShare.Models
         [Key]
         public long Id { get; set; }
 
+        [Display(Name = "Genere")]
         public string Nome { get; set; }
     }
 }

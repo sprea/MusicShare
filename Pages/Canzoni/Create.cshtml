@@ -3,15 +3,23 @@
 
 @{
     ViewData["Title"] = "Create";
+
+    string ErrorFileMessage = "Il file è troppo grande";
+    string ErrorExstensionMessage = "Puoi caricare solamente file con queste estensioni (mp3, wav, 3gp e ogg)";
 }
 
-<h1>Create</h1>
+<h1>Carica</h1>
 
 <h4>Canzone</h4>
 <hr />
+
+<div class="text-center">
+    <p>Puoi caricare file con dimensione massima di 10 Megabyte</p>
+</div>
+
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form enctype="multipart/form-data" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Canzone.Titolo" class="control-label"></label>
@@ -23,24 +31,42 @@
                 <input asp-for="Canzone.Autore" class="form-control" />
                 <span asp-validation-for="Canzone.Autore" class="text-danger"></span>
             </div>
+            <dl>
+                <dt>
+                    <label asp-for="MusicFile"></label>
+                </dt>
+                <dd>
+                    <input asp-for="MusicFile" type="file" />
+                    <span asp-validation-for="MusicFile"></span>
+                </dd>
+            </dl>
             <div class="form-group">
-                <label asp-for="Canzone.Nome_file" class="control-label"></label>
-                <input asp-for="Canzone.Nome_file" class="form-control" />
-                <span asp-validation-for="Canzone.Nome_file" class="text-danger"></span>
+                <label asp-for="Canzone.Genere" class="control-label"></label>
+                <select asp-for="Canzone.Id_Genere" class="form-control" asp-items="ViewBag.Id_Genere"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Canzone.Id_Genere" class="control-label"></label>
-                <select asp-for="Canzone.Id_Genere" class ="form-control" asp-items="ViewBag.Id_Genere"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Carica" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
+@if (Model.ErrorFile)
+{
+    <div id="error-load-file" class="alert alert-danger" style="margin-top:20px">
+        @ErrorFileMessage
+    </div>
+}
+
+@if (Model.ErrorExstensionFile)
+{
+    <div id="error-load-file" class="alert alert-danger" style="margin-top:20px">
+        @ErrorExstensionMessage
+    </div>
+}
+
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="Index">Torna alla lista</a>
 </div>
 
 @section Scripts {
