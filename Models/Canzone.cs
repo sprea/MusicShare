@@ -19,7 +19,8 @@ namespace MusicShare.Models
         [Required(ErrorMessage = "Campo obbligatorio")]
         public string Autore { get; set; }
 
-        public DateTime Data_Caricamento = DateTime.Now;
+        [Display(Name = "Data di caricamento")]
+        public string Data_Caricamento { get; set; }
 
         [Display(Name = "Nome del file")]
         public string Nome_file { get; set; }

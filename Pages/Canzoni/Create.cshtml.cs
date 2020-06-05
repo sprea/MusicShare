@@ -63,14 +63,17 @@ namespace MusicShare.Pages.Canzoni
         {
             ViewData["Id_Genere"] = new SelectList(_context.Genere, "Id", "Nome");
 
-            Canzone.ApplicationUser = await _userManager.GetUserAsync(User);
-
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            if(CheckFile(MusicFile))
+            Canzone.ApplicationUser = await _userManager.GetUserAsync(User);
+
+            Canzone.Data_Caricamento = DateTime.Now.ToShortDateString();
+            
+
+            if (CheckFile(MusicFile))
             {
                 ErrorFile = false;
 

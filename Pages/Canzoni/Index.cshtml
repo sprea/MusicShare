@@ -5,7 +5,8 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<h1>Lista canzoni disponibili</h1>
 
 <p>
     <a asp-page="Create">Carica una canzone</a>
@@ -52,7 +53,8 @@
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.id">Modifica</a> |
                 <a asp-page="./Details" asp-route-id="@item.id">Dettagli</a> |
-                <a asp-page="./Delete" asp-route-id="@item.id">Elimina</a>
+                <a asp-page="./Delete" asp-route-id="@item.id">Elimina</a> | 
+                <a class="btn btn-outline-info" href="~/uploads/@Html.DisplayFor(modelItem => item.Nome_file)" download><i class="fa fa-download"></i> Download!</a>
             </td>
         </tr>
 }
