@@ -6,10 +6,11 @@
 }
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<h1>Lista canzoni disponibili</h1>
+
+<h1>Canzoni disponibili</h1>
 
 <p>
-    <a asp-page="Create">Carica una canzone</a>
+    <a class="btn btn-info" asp-page="Create"><i class="fa fa-upload"></i> Carica una canzone</a>
 </p>
 <table class="table table-bordered">
     <thead>
@@ -29,7 +30,9 @@
             <th>
                 Caricata da
             </th>
-            <th></th>
+            <th>
+                Azioni
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -51,10 +54,10 @@
                 @Html.DisplayFor(modelItem => item.ApplicationUser.Email)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.id">Modifica</a> |
-                <a asp-page="./Details" asp-route-id="@item.id">Dettagli</a> |
-                <a asp-page="./Delete" asp-route-id="@item.id">Elimina</a> | 
-                <a class="btn btn-outline-info" href="~/uploads/@Html.DisplayFor(modelItem => item.Nome_file)" download><i class="fa fa-download"></i> Download!</a>
+                <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@item.id">Modifica</a> |
+                <a class="btn btn-primary" asp-page="./Details" asp-route-id="@item.id">Dettagli</a> |
+                <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.id">Elimina</a> | 
+                <a class="btn btn-info" href="~/uploads/@Html.DisplayFor(modelItem => item.Nome_file)" download><i class="fa fa-download"></i> Download!</a>
             </td>
         </tr>
 }

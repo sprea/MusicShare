@@ -45,7 +45,7 @@ namespace MusicShare.Pages.Canzoni
             }
 
             Canzone = await _context.Canzone
-                .Include(c => c.Genere).FirstOrDefaultAsync(m => m.id == id);
+                .Include(c => c.Genere).Include(c => c.ApplicationUser).FirstOrDefaultAsync(m => m.id == id);
 
             if (Canzone == null)
             {

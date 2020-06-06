@@ -1,52 +1,62 @@
 ﻿@page
 @model MusicShare.Pages.Canzoni.DeleteModel
-
+@inject UserManager<MusicShare.Models.ApplicationUser> userManager;
 @{
     ViewData["Title"] = "Delete";
+
+    var user = await userManager.GetUserAsync(User);
 }
 
-<h1>Elimina </h1>
+@if (user.Id == Model.Canzone.ApplicationUser.Id)
+{
+    <h1>Elimina </h1>
 
-<h3>Questa azione è irreversibile</h3>
-<div>
-    <h4>Canzone</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Canzone.Titolo)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Canzone.Titolo)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Canzone.Autore)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Canzone.Autore)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Canzone.Nome_file)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Canzone.Nome_file)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Canzone.Genere)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Canzone.Genere.Nome)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Canzone.Data_Caricamento)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Canzone.Data_Caricamento)
-        </dd>
-    </dl>
-    
-    <form method="post">
-        <input type="hidden" asp-for="Canzone.id" />
-        <input type="submit" value="Elimina" class="btn btn-danger" /> |
-        <a asp-page="./Index">Torna alla lista</a>
-    </form>
-</div>
+    <h3>Questa azione è irreversibile</h3>
+    <div>
+        <h4>Canzone</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Canzone.Titolo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Canzone.Titolo)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Canzone.Autore)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Canzone.Autore)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Canzone.Nome_file)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Canzone.Nome_file)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Canzone.Genere)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Canzone.Genere.Nome)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Canzone.Data_Caricamento)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Canzone.Data_Caricamento)
+            </dd>
+        </dl>
+
+        <form method="post">
+            <input type="hidden" asp-for="Canzone.id" />
+            <input type="submit" value="Elimina" class="btn btn-danger" /> |
+            <a asp-page="./Index">Torna alla lista</a>
+        </form>
+    </div>
+}
+else
+{
+    <h3 class="text-center text-danger">Non puoi eliminare i dati di questa canzone</h3>
+    <h4 class="text-center text-black-50">Proprietario: @Model.Canzone.ApplicationUser.Nome @Model.Canzone.ApplicationUser.Cognome (@Model.Canzone.ApplicationUser.Email)</h4>
+}

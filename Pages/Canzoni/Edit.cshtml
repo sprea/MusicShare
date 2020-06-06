@@ -1,51 +1,62 @@
 ﻿@page
 @model MusicShare.Pages.Canzoni.EditModel
-
+@inject UserManager<MusicShare.Models.ApplicationUser> userManager;
 @{
     ViewData["Title"] = "Edit";
+
+    var user = await userManager.GetUserAsync(User);
 }
 
-<h1>Modifica</h1>
+@if (user.Id == Model.Canzone.ApplicationUser.Id)
+{
+    <h1>Modifica</h1>
 
-<h4>Puoi solamente modificare i dati della canzone</h4>
+    <h4>Puoi solamente modificare i dati della canzone</h4>
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Canzone.id" />
-            <div class="form-group">
-                <label asp-for="Canzone.Titolo" class="control-label"></label>
-                <input asp-for="Canzone.Titolo" class="form-control" />
-                <span asp-validation-for="Canzone.Titolo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Canzone.Autore" class="control-label"></label>
-                <input asp-for="Canzone.Autore" class="form-control" />
-                <span asp-validation-for="Canzone.Autore" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input asp-for="Canzone.Nome_file" class="form-control" type="hidden" />
-            </div>
-            <div class="form-group">
-                <label asp-for="Canzone.Genere" class="control-label"></label>
-                <select asp-for="Canzone.Id_Genere" class="form-control" asp-items="ViewBag.Id_Genere"></select>
-                <span asp-validation-for="Canzone.Id_Genere" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input asp-for="Canzone.Data_Caricamento" class="form-control" type="hidden" />
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Salva" class="btn btn-primary" />
-            </div>
-        </form>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Canzone.id" />
+                <div class="form-group">
+                    <label asp-for="Canzone.Titolo" class="control-label"></label>
+                    <input asp-for="Canzone.Titolo" class="form-control" />
+                    <span asp-validation-for="Canzone.Titolo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Canzone.Autore" class="control-label"></label>
+                    <input asp-for="Canzone.Autore" class="form-control" />
+                    <span asp-validation-for="Canzone.Autore" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Canzone.Nome_file" class="form-control" type="hidden" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Canzone.Genere" class="control-label"></label>
+                    <select asp-for="Canzone.Id_Genere" class="form-control" asp-items="ViewBag.Id_Genere"></select>
+                    <span asp-validation-for="Canzone.Id_Genere" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Canzone.Data_Caricamento" class="form-control" type="hidden" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Salva" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-page="./Index">Torna alla lista</a>
-</div>
+    <div>
+        <a asp-page="./Index">Torna alla lista</a>
+    </div>
+}
+else
+{
+    <h3 class="text-center text-danger">Non puoi modificare i dati di questa canzone</h3>
+    <h4 class="text-center text-black-50">Proprietario: @Model.Canzone.ApplicationUser.Nome @Model.Canzone.ApplicationUser.Cognome (@Model.Canzone.ApplicationUser.Email)</h4>
+}
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

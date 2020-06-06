@@ -9,7 +9,9 @@
     var Exstension = fileInfo.Extension;
 }
 
-<h1>Details</h1>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<h1>Dettagli</h1>
 
 <div>
     <h4>Canzone</h4>
@@ -70,9 +72,15 @@
                 <p>Il file è in formato 3gp e non può essere riprodotto nel browser</p>
             }
         </dd>
+        <dt class="col-sm-2">
+            <label>Scarica</label>
+        </dt>
+        <dd class="col-sm-10">
+            <a class="btn btn-outline-info" href="~/uploads/@Html.DisplayFor(model => model.Canzone.Nome_file)" download><i class="fa fa-download"></i> Download!</a>
+        </dd>
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Canzone.id">Modifica</a> |
+    <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@Model.Canzone.id">Modifica</a> |
     <a asp-page="./Index">Torna alla lista</a>
 </div>
