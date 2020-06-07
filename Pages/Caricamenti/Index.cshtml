@@ -6,49 +6,66 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<h1>Le tue canzoni</h1>
+@if (Model.CanzoniPersonali.Count() > 0)
+{
+    <h1>Le tue canzoni</h1>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CanzoniPersonali[0].Titolo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CanzoniPersonali[0].Autore)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CanzoniPersonali[0].Genere.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CanzoniPersonali[0].Data_Caricamento)
-            </th>
-            <th>
-                Azioni
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.CanzoniPersonali)
-        {
+    <table class="table table-bordered">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Titolo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Autore)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Genere.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data_Caricamento)
-                </td>
-                <td>
-                    <a class="btn btn-outline-info" href="~/uploads/@Html.DisplayFor(modelItem => item.Nome_file)" download><i class="fa fa-download"></i> Download!</a>
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.CanzoniPersonali[0].Titolo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CanzoniPersonali[0].Autore)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CanzoniPersonali[0].Anno_pubblicazione)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CanzoniPersonali[0].Genere.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CanzoniPersonali[0].Data_Caricamento)
+                </th>
+                <th>
+                    Azioni
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CanzoniPersonali)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Titolo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Autore)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Anno_pubblicazione)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Genere.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data_Caricamento)
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-info" href="~/uploads/@Html.DisplayFor(modelItem => item.Nome_file)" download><i class="fa fa-download"></i> Download!</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h1>Non hai caricato nessuna canzone</h1>
+    <p>
+        <a class="btn btn-info" asp-page="../Canzoni/Create"><i class="fa fa-upload"></i> Carica la tua prima canzone</a>
+    </p>
+}
+
 

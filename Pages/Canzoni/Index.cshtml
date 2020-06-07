@@ -7,59 +7,69 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<h1>Canzoni disponibili</h1>
+@if (Model.Canzone.Count() > 0)
+{
+    <h1>Canzoni disponibili</h1>
 
-<p>
-    <a class="btn btn-info" asp-page="Create"><i class="fa fa-upload"></i> Carica una canzone</a>
-</p>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Canzone[0].Titolo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Canzone[0].Autore)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Canzone[0].Genere.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Canzone[0].Data_Caricamento)
-            </th>
-            <th>
-                Caricata da
-            </th>
-            <th>
-                Azioni
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Canzone) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titolo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Autore)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genere.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data_Caricamento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApplicationUser.Email)
-            </td>
-            <td>
-                <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@item.id">Modifica</a> |
-                <a class="btn btn-primary" asp-page="./Details" asp-route-id="@item.id">Dettagli</a> |
-                <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.id">Elimina</a> | 
-                <a class="btn btn-info" href="~/uploads/@Html.DisplayFor(modelItem => item.Nome_file)" download><i class="fa fa-download"></i> Download!</a>
-            </td>
-        </tr>
+    <p>
+        <a class="btn btn-info" asp-page="Create"><i class="fa fa-upload"></i> Carica una canzone</a>
+    </p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Canzone[0].Titolo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Canzone[0].Autore)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Canzone[0].Anno_pubblicazione)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Canzone[0].Genere.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Canzone[0].Data_Caricamento)
+                </th>
+                <th>
+                    Azioni
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Canzone)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Titolo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Autore)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Anno_pubblicazione)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Genere.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data_Caricamento)
+                    </td>
+                    <td>
+                        <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@item.id">Modifica</a> |
+                        <a class="btn btn-primary" asp-page="./Details" asp-route-id="@item.id">Dettagli</a> |
+                        <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.id">Elimina</a> |
+                        <a class="btn btn-info" href="~/uploads/@Html.DisplayFor(modelItem => item.Nome_file)" download><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}else
+{
+    <h1>Non sono presenti canzoni da mostrare</h1>
+    <p>
+        <a class="btn btn-info" asp-page="Create"><i class="fa fa-upload"></i> Carica la tua prima canzone</a>
+    </p>
 }
-    </tbody>
-</table>

@@ -30,11 +30,17 @@
             </div>
 
             <div class="form-group">
+                <label asp-for="Canzone.Anno_pubblicazione" class="control-label"></label>
+                <input asp-for="Canzone.Anno_pubblicazione" class="form-control" type="number" min="1000" max="2900" step="1" />
+                <span asp-validation-for="Canzone.Anno_pubblicazione" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
                 <label asp-for="MusicFile"></label>
                 <input asp-for="MusicFile" type="file" />
                 <span asp-validation-for="MusicFile"></span>
             </div>
-                    
+
             <div class="form-group">
                 <label asp-for="Canzone.Genere" class="control-label"></label>
                 <select asp-for="Canzone.Id_Genere" class="form-control" asp-items="ViewBag.Id_Genere"></select>

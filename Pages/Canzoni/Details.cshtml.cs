@@ -30,7 +30,7 @@ namespace MusicShare.Pages.Canzoni
                 return NotFound();
             }
 
-            Canzone = await _context.Canzone.Include(c => c.Genere).FirstOrDefaultAsync(m => m.id == id);
+            Canzone = await _context.Canzone.Include(c => c.Genere).Include(c => c.ApplicationUser).FirstOrDefaultAsync(m => m.id == id);
 
             if (Canzone == null)
             {

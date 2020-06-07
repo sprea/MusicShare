@@ -29,6 +29,13 @@
                     <input asp-for="Canzone.Autore" class="form-control" />
                     <span asp-validation-for="Canzone.Autore" class="text-danger"></span>
                 </div>
+
+                <div class="form-group">
+                    <label asp-for="Canzone.Anno_pubblicazione" class="control-label"></label>
+                    <input asp-for="Canzone.Anno_pubblicazione" class="form-control" type="number" min="1000" max="2900" step="1" />
+                    <span asp-validation-for="Canzone.Anno_pubblicazione" class="text-danger"></span>
+                </div>
+
                 <div class="form-group">
                     <input asp-for="Canzone.Nome_file" class="form-control" type="hidden" />
                 </div>

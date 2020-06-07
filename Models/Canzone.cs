@@ -19,6 +19,10 @@ namespace MusicShare.Models
         [Required(ErrorMessage = "Campo obbligatorio")]
         public string Autore { get; set; }
 
+        [Required(ErrorMessage = "Campo obbligatorio")]
+        [Display(Name = "Pubblicazione")]
+        public string Anno_pubblicazione { get; set; }
+
         [Display(Name = "Data di caricamento")]
         public string Data_Caricamento { get; set; }
 
