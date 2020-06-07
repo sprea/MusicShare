@@ -14,6 +14,48 @@
     <p>
         <a class="btn btn-info" asp-page="Create"><i class="fa fa-upload"></i> Carica una canzone</a>
     </p>
+
+    <p>
+        <button id="btnFiltro" class="btn btn-outline-info" onclick="funzioneFiltro()">Mostra Filtro</button>
+    </p>
+
+    <div id="Filtro" style="display: none">
+        <hr />
+        <form method="get">
+            <h3>Ricerca</h3>
+            <div class="row">
+                <div class="col form-group" align="left">
+                    <label asp-for="Titolo" class="control-label"></label>
+                    <input type="text" asp-for="Titolo" class="form-control" style="width: 300px" />
+                </div>
+                <br />
+                <div class="col form-group" align="left">
+                    <label asp-for="Autore" class="control-label"></label>
+                    <input type="text" asp-for="Autore" class="form-control" style="width: 300px" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col form-group" align="left">
+                    <label asp-for="AnnoPubblicazione" class="control-label"></label>
+                    <input type="number" asp-for="AnnoPubblicazione" class="form-control" min="1000" max="2900" step="1" style="width: 300px" />
+                </div>
+                <br />
+                <div class="col form-group" align="left">
+                    <label asp-for="Genere" class="control-label"></label>
+                    <select asp-for="Genere" class="form-control" asp-items="ViewBag.Genere" style="width: 300px">
+                        <option value="" selected>Scegli un genere</option>
+                    </select>
+                </div>
+                <br />
+            </div>
+            <input type="submit" value="Filtra" class="btn btn-primary" />
+        </form>
+        <hr />
+    </div>
+
+    <br />
+
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -66,10 +108,25 @@
             }
         </tbody>
     </table>
-}else
+}
+else
 {
     <h1>Non sono presenti canzoni da mostrare</h1>
     <p>
         <a class="btn btn-info" asp-page="Create"><i class="fa fa-upload"></i> Carica la tua prima canzone</a>
     </p>
 }
+
+<script>
+    function funzioneFiltro() {
+        var x = document.getElementById("Filtro");
+        var btn = document.getElementById("btnFiltro");
+        if (x.style.display == "none") {
+            btn.innerHTML = "Nascondi filtro"
+            x.style.display = "block";
+        } else {
+            btn.innerHTML = "Attiva filtro"
+            x.style.display = "none";
+        }
+    }
+</script>
