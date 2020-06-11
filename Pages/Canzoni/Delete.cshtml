@@ -7,10 +7,9 @@
     var user = await userManager.GetUserAsync(User);
 }
 
-@if (user.Id == Model.Canzone.ApplicationUser.Id)
+@if (user.Id == Model.Canzone.ApplicationUser.Id || userManager.IsInRoleAsync(user, "Admin").Result)
 {
     <h1>Elimina </h1>
-
     <h3>Questa azione è irreversibile</h3>
     <div>
         <h4>Canzone</h4>
@@ -53,7 +52,6 @@
                 @Html.DisplayFor(model => model.Canzone.Data_Caricamento)
             </dd>
         </dl>
-
         <form method="post">
             <input type="hidden" asp-for="Canzone.id" />
             <input type="submit" value="Elimina" class="btn btn-danger" /> |

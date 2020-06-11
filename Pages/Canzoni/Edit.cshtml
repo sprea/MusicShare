@@ -7,7 +7,7 @@
     var user = await userManager.GetUserAsync(User);
 }
 
-@if (user.Id == Model.Canzone.ApplicationUser.Id)
+@if (user.Id == Model.Canzone.ApplicationUser.Id || userManager.IsInRoleAsync(user, "Admin").Result)
 {
     <h1>Modifica</h1>
 
