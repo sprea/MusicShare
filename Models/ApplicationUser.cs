@@ -11,7 +11,5 @@ namespace MusicShare.Models
         public string Nome { get; set; }
 
         public string Cognome { get; set; }
-
-        public Raccolta Raccolta { get; set; }
     }
 }

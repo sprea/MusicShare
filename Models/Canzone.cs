@@ -36,5 +36,7 @@ namespace MusicShare.Models
         public Genere Genere { get; set; }
 
         public ApplicationUser ApplicationUser { get; set; }
+
+        public List<RaccoltaCanzoni> RaccoltaCanzoni { get; set; }
     }
 }

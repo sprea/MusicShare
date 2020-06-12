@@ -8,8 +8,9 @@ namespace MusicShare.Models
 {
     public class RaccoltaCanzoni
     {
-        [Key]
-        public long Id { get; set; }
+        public long Id_Raccolta { get; set; }
+
+        public long Id_Canzone { get; set; }
 
         public Raccolta Raccolta { get; set; }
 

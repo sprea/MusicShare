@@ -1,0 +1,49 @@
+﻿@page
+@model MusicShare.Pages.Raccolte.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Raccolte</h1>
+
+<p>
+    <a class="btn btn-primary" asp-page="Create">Crea una nuova raccolta</a>
+</p>
+
+<br />
+
+<p>
+    <a class="btn btn-outline-primary" asp-page="./Addsong">Aggiungi canzoni alle playlist</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Raccolta[0].Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Raccolta[0].Data_Creazione)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Raccolta) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data_Creazione)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@item.Id">Modifica</a> |
+                <a class="btn btn-primary" asp-page="./Details" asp-route-id="@item.Id">Dettagli</a> |
+                <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.Id">Elimina</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
