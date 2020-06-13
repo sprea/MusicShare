@@ -6,3 +6,46 @@
 
 <h1>Gestione utenti</h1>
 
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Cognome
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Accessi falliti
+            </th>
+            <th>
+                Azioni
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var utente in Model.Utenti)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => utente.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => utente.Cognome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => utente.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => utente.AccessFailedCount)
+                </td>
+                <td>
+                    <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@utente.Id">Rimuovi</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
