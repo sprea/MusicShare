@@ -8,7 +8,7 @@
 <h1>Generi</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a class="btn btn-primary" asp-page="Create">Aggiungi</a>
 </p>
 <table class="table">
     <thead>
@@ -19,7 +19,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Genere[0].Nome)
             </th>
-            <th></th>
+            <th>
+                Azioni
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -32,9 +34,9 @@
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@item.Id">Modifica</a> |
+                <a class="btn btn-primary" asp-page="./Details" asp-route-id="@item.Id">Dettagli</a> |
+                <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.Id">Elimina</a>
             </td>
         </tr>
 }

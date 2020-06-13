@@ -2,10 +2,10 @@
 @model MusicShare.Pages.Generi.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Aggiungi";
 }
 
-<h1>Create</h1>
+<h1>Aggiungi</h1>
 
 <h4>Genere</h4>
 <hr />
@@ -19,14 +19,14 @@
                 <span asp-validation-for="Genere.Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Aggiungi" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a class="btn btn-info" asp-page="Index">Torna ai generi</a>
 </div>
 
 @section Scripts {
