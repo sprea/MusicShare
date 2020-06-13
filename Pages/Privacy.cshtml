@@ -1,10 +1,33 @@
 ﻿@page
 @model PrivacyModel
 @{
-    ViewData["Title"] = "Policy Dati e Privacy";
+    ViewData["Title"] = "Policy Dati - Privacy";
 }
 <h1>@ViewData["Title"]</h1>
 
 <p>
-    ---
+    L'utente registrandosi accetta che i suoi dati utente come nome, cognome, indirizzo email 
+    vengano usati per monitorare e gestire al meglio il servizio di condivisione dei file musicali.
+
+    In particolare:
+
+    <ul>
+        <li>
+            Identificare quale utente ha caricato una specifica canzone
+        </li>
+
+        <li>
+            Bloccare utenti che effettuano caricamenti di materiale non autorizzati (violazione del copyright)
+        </li>
+
+        <li>
+            Prevenire usi illeciti del servizio
+        </li>
+    </ul>
+
+    Ogni utente dopo la registrazione ha accesso alle pagine di gestione dei propri dati disponibili
+    <a class="btn-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">a questa pagina</a>.
+
+    Gli amministratori possono in ogni momento eliminare l'account e i dati caricati se non vengono rispettate le leggi sul copyright 
+    o vengono caricati contenuti non appropriati.
 </p>

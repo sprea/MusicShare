@@ -1,14 +1,13 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Registrazione";
 }
 
 <h1 align="center">@ViewData["Title"]</h1>
 
 <section align="center">
     <form asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-check">
-        <h4>Create a new account.</h4>
         <hr />
         <div class="row">
             <div class="col" align="left">
@@ -45,9 +44,12 @@
         </div>
         <br />
         <div class="form-group" align="center">
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="submit" class="btn btn-primary">Registrati</button>
         </div>
     </form>
+    <p>
+        Registrandoti accetti queste <a asp-area="" target="_blank" asp-page="/Privacy">condizioni</a>
+    </p>
 </section>
 
 @section Scripts {

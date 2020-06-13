@@ -46,28 +46,28 @@ namespace MusicShare.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [Display(Name = "Name")]
+            [Required(ErrorMessage = "Campo richiesto")]
+            [Display(Name = "Nome")]
             public string Name { get; set; }
 
-            [Required]
-            [Display(Name = "Surname")]
+            [Required(ErrorMessage = "Campo richiesto")]
+            [Display(Name = "Cognome")]
             public string Surname { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Campo richiesto")]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [Required(ErrorMessage = "Campo richiesto")]
+            [StringLength(100, ErrorMessage = "La {0} deve essere lunga tra {2} e {1} caratteri", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Conferma password")]
+            [Compare("Password", ErrorMessage = "Le password non corrispondono")]
             public string ConfirmPassword { get; set; }
         }
 
